@@ -183,11 +183,11 @@
         </div>
         <div class="col-md-8 col-md-offset-2">
       		<h2 id="本次博客内容使用新浪云-PHP-天气搭建微信公众号"><a href="#本次博客内容使用新浪云-PHP-天气搭建微信公众号" class="headerlink" title="本次博客内容使用新浪云+PHP+天气搭建微信公众号"></a>本次博客内容使用新浪云+PHP+天气搭建微信公众号</h2><h3 id="1-首先去微信公众平台申请账号"><a href="#1-首先去微信公众平台申请账号" class="headerlink" title="1.首先去微信公众平台申请账号"></a>1.首先去微信公众平台申请账号</h3><p>在申请时选择订阅号，选择个体,填上公众号的用途和功能<br><img src="/2019/07/18/public/1.png" alt="creategit"></p>
-<h3 id="2-使用新浪云搭建PHP"><a href="#2-使用新浪云搭建PHP" class="headerlink" title="2.使用新浪云搭建PHP"></a>2.使用新浪云搭建PHP</h3><p>#####由于新浪云可以免费使用30天，所以可以选择新浪云来试试手，注册并登陆以后选择云应用SAE<br><img src="/2019/07/18/public/3.png" alt="checken"></p>
-<p>#####选择以下配置<br><img src="/2019/07/18/public/4.png" alt="check"></p>
-<p>#####建立代码版本<br><img src="/2019/07/18/public/5.png" alt="checke"></p>
-<p>#####在线编辑代码<br><img src="/2019/07/18/public/6.png" alt="chec"></p>
-<p>#####添加index.php文件<br>&lt;?php<br>session_start();<br>header(“Content-type:text/html;charset=utf-8”);<br>define(“TOKEN”, “weixin”);<br>require(‘sdk.php’);<br>$wechat = new WeChat();<br>$wechat-&gt;index();</p>
+<h3 id="2-使用新浪云搭建PHP"><a href="#2-使用新浪云搭建PHP" class="headerlink" title="2.使用新浪云搭建PHP"></a>2.使用新浪云搭建PHP</h3><h5 id="由于新浪云可以免费使用30天，所以可以选择新浪云来试试手，注册并登陆以后选择云应用SAE"><a href="#由于新浪云可以免费使用30天，所以可以选择新浪云来试试手，注册并登陆以后选择云应用SAE" class="headerlink" title="由于新浪云可以免费使用30天，所以可以选择新浪云来试试手，注册并登陆以后选择云应用SAE"></a>由于新浪云可以免费使用30天，所以可以选择新浪云来试试手，注册并登陆以后选择云应用SAE</h5><p><img src="/2019/07/18/public/3.png" alt="checken"></p>
+<h5 id="选择以下配置"><a href="#选择以下配置" class="headerlink" title="选择以下配置"></a>选择以下配置</h5><p><img src="/2019/07/18/public/4.png" alt="check"></p>
+<h5 id="建立代码版本"><a href="#建立代码版本" class="headerlink" title="建立代码版本"></a>建立代码版本</h5><p><img src="/2019/07/18/public/5.png" alt="checke"></p>
+<h5 id="在线编辑代码"><a href="#在线编辑代码" class="headerlink" title="在线编辑代码"></a>在线编辑代码</h5><p><img src="/2019/07/18/public/6.png" alt="chec"></p>
+<h5 id="添加index-php文件"><a href="#添加index-php文件" class="headerlink" title="添加index.php文件"></a>添加index.php文件</h5><p>&lt;?php<br>session_start();<br>header(“Content-type:text/html;charset=utf-8”);<br>define(“TOKEN”, “weixin”);<br>require(‘sdk.php’);<br>$wechat = new WeChat();<br>$wechat-&gt;index();</p>
 <p>class WeChat<br>{</p>
 <pre><code>public static $j;
 
@@ -267,7 +267,7 @@ public function  curl($city){
        return $arr;
 }
 </code></pre><p>}<br>?&gt;</p>
-<p>#####添加sdk.php<br>&lt;?php</p>
+<h5 id="添加sdk-php"><a href="#添加sdk-php" class="headerlink" title="添加sdk.php"></a>添加sdk.php</h5><p>&lt;?php</p>
 <p>class sdk{</p>
 <pre><code>//关注公众号时发生的事件和纯文本回复
 public function returnSubscribe($postObject, $Content){
@@ -312,9 +312,9 @@ public function returnPw($postObject, $arr){
 
 }
 </code></pre><p>}?&gt;</p>
-<p>###3.将二级域名加到微信公众平台中去<br><img src="/2019/07/18/public/7.png" alt="che"><br><img src="/2019/07/18/public/2.png" alt="ch"></p>
-<p>###4.打开开发者模式<br>在微信公众号中找到开发，点击基本配置，如图<br><img src="/2019/07/18/public/8.png" alt="ch"></p>
-<p>###5.总结<br>关注公众号后，可以发送城市名获取天气情况，在微信平台中还有开发文档，可以多看看，网上也有很多有趣的api可以多了解</p>
+<h3 id="3-将二级域名加到微信公众平台中去"><a href="#3-将二级域名加到微信公众平台中去" class="headerlink" title="3.将二级域名加到微信公众平台中去"></a>3.将二级域名加到微信公众平台中去</h3><p><img src="/2019/07/18/public/7.png" alt="che"><br><img src="/2019/07/18/public/2.png" alt="ch"></p>
+<h3 id="4-打开开发者模式"><a href="#4-打开开发者模式" class="headerlink" title="4.打开开发者模式"></a>4.打开开发者模式</h3><p>在微信公众号中找到开发，点击基本配置，如图<br><img src="/2019/07/18/public/8.png" alt="c"></p>
+<h3 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h3><p>关注公众号后，可以发送城市名获取天气情况，在微信平台中还有开发文档，可以多看看，网上也有很多有趣的api可以多了解</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
