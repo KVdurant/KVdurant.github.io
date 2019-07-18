@@ -183,7 +183,130 @@
         </div>
         <div class="col-md-8 col-md-offset-2">
       		<h2 id="本次博客内容使用新浪云-PHP-天气搭建微信公众号"><a href="#本次博客内容使用新浪云-PHP-天气搭建微信公众号" class="headerlink" title="本次博客内容使用新浪云+PHP+天气搭建微信公众号"></a>本次博客内容使用新浪云+PHP+天气搭建微信公众号</h2><h3 id="1-首先去微信公众平台申请账号"><a href="#1-首先去微信公众平台申请账号" class="headerlink" title="1.首先去微信公众平台申请账号"></a>1.首先去微信公众平台申请账号</h3><p>在申请时选择订阅号，选择个体,填上公众号的用途和功能<br><img src="/2019/07/18/public/1.png" alt="creategit"></p>
-<h3 id="2-使用新浪云搭建PHP"><a href="#2-使用新浪云搭建PHP" class="headerlink" title="2.使用新浪云搭建PHP"></a>2.使用新浪云搭建PHP</h3><p>由于新浪云可以免费使用30天，所以可以选择新浪云来试试手，注册并登陆以后选择云应用SAE<br><img src="/2019/07/18/public/3.png" alt="checken"><br>选择以下配置<br><img src="/2019/07/18/public/4.png" alt="checken"></p>
+<h3 id="2-使用新浪云搭建PHP"><a href="#2-使用新浪云搭建PHP" class="headerlink" title="2.使用新浪云搭建PHP"></a>2.使用新浪云搭建PHP</h3><p>由于新浪云可以免费使用30天，所以可以选择新浪云来试试手，注册并登陆以后选择云应用SAE<br><img src="/2019/07/18/public/3.png" alt="checken"><br>选择以下配置<br><img src="/2019/07/18/public/4.png" alt="check"><br>建立代码版本<br><img src="/2019/07/18/public/5.png" alt="checke"><br>在线编辑代码<br><img src="/2019/07/18/public/6.png" alt="chec"><br>添加index.php文件<br>&lt;?php<br>session_start();<br>header(“Content-type:text/html;charset=utf-8”);<br>define(“TOKEN”, “weixin”);<br>require(‘sdk.php’);<br>$wechat = new WeChat();<br>$wechat-&gt;index();</p>
+<p>class WeChat<br>{</p>
+<pre><code>public static $j;
+
+//验证签名
+public function index()
+{ // 将timestamp,noce,token按字典序排序
+    $echostr   = $_GET[&apos;echostr&apos;];
+    $timestamp = $_GET[&apos;timestamp&apos;];
+    $nonce       = $_GET[&apos;nonce&apos;];
+    $token        = &apos;weixin&apos;;
+    $signature = $_GET[&apos;signature&apos;];
+    $array         = array($timestamp, $nonce, $token);
+    sort($array);
+    // 将排序后的三个参数怕拼接之后用sha1加密
+    $tmpstr = implode(&apos;&apos;,$array);
+    $tmpstr = sha1($tmpstr);
+    // 将加密后的字符串与signature进行对比，判断该请求是否来自微信
+    if($tmpstr == $signature  &amp;&amp; $echostr ){
+        echo $_GET[&apos;echostr&apos;];
+        exit;
+    }
+    else{
+        $this-&gt;responseMsg();
+    }
+}
+
+public function responseMsg()
+{
+    $postArr = file_get_contents(&apos;php://input&apos;);
+    $postObject =  simplexml_load_string($postArr, &apos;SimpleXMLElement&apos;, LIBXML_NOCDATA);
+    if(strtolower($postObject-&gt;MsgType == &quot;event&quot;)){
+        //如果是订阅
+        if(strtolower($postObject-&gt;Event == &quot;subscribe&quot;)){
+            //回复消息
+            $resub = new sdk();
+            $Content = &quot;欢迎关注xxx，提供天气查询，输入城市名即可查询天气情况&quot;;
+            $resub-&gt;returnSubscribe($postObject, $Content);
+            echo $resub-&gt;returnSubscribe($postObject, $Content);
+        }
+    }
+
+    if(strtolower($postObject-&gt;MsgType) == &quot;text&quot; &amp;&amp; trim($postObject-&gt;Content) == &quot;tuwen&quot;){
+        $arr = array(
+            array(
+                &apos;title&apos; =&gt; &quot;牛客网&quot;,
+                &apos;description&apos; =&gt; &quot;选择目标职位，测评技能现状，为你定制薄弱知识点专项练习&quot;,
+                &apos;picUrl&apos; =&gt; &quot;https://static.nowcoder.com/images/target.png&quot;,
+                &apos;url&apos; =&gt; &quot;https://www.nowcoder.com&quot;,
+            ),
+        );
+
+       $returnPw = new sdk();
+       echo  $returnPw-&gt;returnPw($postObject, $arr);
+
+    }
+
+   if(strtolower($postObject-&gt;MsgType == &quot;text&quot;) ){
+       $restext = new sdk();
+       $arr = $this-&gt;curl($postObject-&gt;Content);
+       $Content=&quot;城市：&quot;.$arr[&quot;result&quot;][&quot;today&quot;][&quot;city&quot;].&quot;\n&quot;.&quot;日期：&quot;.$arr[&quot;result&quot;][&quot;today&quot;][&quot;week&quot;].&quot;\n&quot;.
+                   &quot;温度：&quot;.$arr[&quot;result&quot;][&quot;today&quot;][&quot;temperature&quot;].&quot;\n&quot;.&quot;气候：&quot;.$arr[&quot;result&quot;][&quot;today&quot;][&quot;weather&quot;];
+       echo $restext-&gt;returnSubscribe($postObject,  $Content);
+   }
+
+}
+
+public function  curl($city){
+     $ch = curl_init();
+     // 2. 设置选项，包括URL
+     curl_setopt($ch,CURLOPT_URL,&quot;http://v.juhe.cn/weather/index?format=2&amp;cityname=&quot;.$city.&quot;&amp;key=key&quot;);
+     curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+     curl_setopt($ch,CURLOPT_HEADER,0);
+     // 3. 执行并获取HTML文档内容
+     $output = curl_exec($ch);
+     curl_close($ch);
+       $arr=json_decode($output,true);
+       return $arr;
+}
+</code></pre><p>}<br>?&gt;<br>添加sdk.php<br>&lt;?php</p>
+<p>class sdk{</p>
+<pre><code>//关注公众号时发生的事件和纯文本回复
+public function returnSubscribe($postObject, $Content){
+     $toUser = $postObject-&gt;FromUserName;
+     $fromUser = $postObject-&gt;ToUserName;
+     $MsgTyp = &quot;text&quot;;
+     $template =&quot;&lt;xml&gt;
+                   &lt;ToUserName&gt;&lt;![CDATA[%s]]&gt;&lt;/ToUserName&gt;
+                   &lt;FromUserName&gt;&lt;![CDATA[%s]]&gt;&lt;/FromUserName&gt;
+                   &lt;CreateTime&gt;%s&lt;/CreateTime&gt;
+                   &lt;MsgType&gt;&lt;![CDATA[%s]]&gt;&lt;/MsgType&gt;
+                   &lt;Content&gt;&lt;![CDATA[%s]]&gt;&lt;/Content&gt;
+                 &lt;/xml&gt;&quot;;
+     $info = sprintf($template,$toUser,$fromUser,time(),$MsgTyp,$Content);  
+     return $info;
+}
+
+//多图文消息事件
+public function returnPw($postObject, $arr){
+    $toUser = $postObject-&gt;FromUserName;
+    $fromUser = $postObject-&gt;ToUserName;
+    $template = &quot;&lt;xml&gt;
+                   &lt;ToUserName&gt;&lt;![CDATA[%s]]&gt;&lt;/ToUserName&gt;
+                   &lt;FromUserName&gt;&lt;![CDATA[%s]]&gt;&lt;/FromUserName&gt;
+                   &lt;CreateTime&gt;%s&lt;/CreateTime&gt;
+                   &lt;MsgType&gt;&lt;![CDATA[%s]]&gt;&lt;/MsgType&gt;
+                   &lt;ArticleCount&gt;&quot;.count($arr).&quot;&lt;/ArticleCount&gt;
+                   &lt;Articles&gt;&quot;;
+    foreach($arr as $k =&gt; $v){
+             $template.=&quot;
+                    &lt;item&gt;
+                      &lt;Title&gt;&lt;![CDATA[&quot;.$v[&apos;title&apos;].&quot;]]&gt;&lt;/Title&gt;
+                      &lt;Description&gt;&lt;![CDATA[&quot;.$v[&apos;description&apos;].&quot;]]&gt;&lt;/Description&gt;
+                      &lt;PicUrl&gt;&lt;![CDATA[&quot;.$v[&apos;picUrl&apos;].&quot;]]&gt;&lt;/PicUrl&gt;
+                      &lt;Url&gt;&lt;![CDATA[&quot;.$v[&apos;url&apos;].&quot;]]&gt;&lt;/Url&gt;
+                    &lt;/item&gt;&quot;;
+     }
+     $template.=&quot;&lt;/Articles&gt; 
+                &lt;/xml&gt;&quot;;
+    $info = sprintf($template,$toUser,$fromUser,time(),&apos;news&apos;);
+    return $info;
+
+}
+</code></pre><p>}</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
