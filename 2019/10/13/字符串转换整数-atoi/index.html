@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>两数之和 | Hexo</title>
+  <title>字符串转换整数 (atoi) | Hexo</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -173,47 +173,158 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2019-10-13T06:12:13.348Z" itemprop="datePublished">
+      <time datetime="2019-10-13T06:32:35.265Z" itemprop="datePublished">
           2019-10-13
       </time>
     
 </span>
-                <h1>两数之和</h1>
+                <h1>字符串转换整数 (atoi)</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h1 id="Leetcode-PHP解决两数之和"><a href="#Leetcode-PHP解决两数之和" class="headerlink" title="Leetcode.PHP解决两数之和"></a>Leetcode.PHP解决两数之和</h1><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。<br>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。<br>示例:<br>给定 nums = [2, 7, 11, 15], target = 9<br>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><p>class Solution {</p>
-<pre><code>/**
- * @param Integer[] $nums
- * @param Integer $target
- * @return Integer[]
- */
-function twoSum($nums, $target) {
-    foreach($nums as $k =&gt; $v){
-        for($i=$k+1;$i&lt;=count($nums)-1;$i++){
-            $target1=$v+$nums[$i];
-            if($target1==$target)
-            {
-             return array($k,$i);   
-            }
-        }
-    }
-}
-</code></pre><p>}</p>
+      		<h1 id="Leetcode-python解决字符串转换整数-atoi"><a href="#Leetcode-python解决字符串转换整数-atoi" class="headerlink" title="Leetcode.python解决字符串转换整数 (atoi)"></a>Leetcode.python解决字符串转换整数 (atoi)</h1><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>请你来实现一个 atoi 函数，使其能将字符串转换成整数。</p>
+<p>首先，该函数会根据需要丢弃无用的开头空格字符，直到寻找到第一个非空格的字符为止。</p>
+<p>当我们寻找到的第一个非空字符为正或者负号时，则将该符号与之后面尽可能多的连续数字组合起来，作为该整数的正负号；假如第一个非空字符是数字，则直接将其与之后连续的数字字符组合起来，形成整数。</p>
+<p>该字符串除了有效的整数部分之后也可能会存在多余的字符，这些字符可以被忽略，它们对于函数不应该造成影响。</p>
+<p>注意：假如该字符串中的第一个非空格字符不是一个有效整数字符、字符串为空或字符串仅包含空白字符时，则你的函数不需要进行转换。</p>
+<p>在任何情况下，若函数不能进行有效的转换时，请返回 0。</p>
+<p>说明：</p>
+<p>假设我们的环境只能存储 32 位大小的有符号整数，那么其数值范围为 [−231,  231 − 1]。如果数值超过这个范围，请返回  INT_MAX (231 − 1) 或 INT_MIN (−231) 。</p>
+<p>示例 1:</p>
+<p>输入: “42”<br>输出: 42<br>示例 2:</p>
+<p>输入: “   -42”<br>输出: -42<br>解释: 第一个非空白字符为 ‘-‘, 它是一个负号。<br>     我们尽可能将负号与后面所有连续出现的数字组合起来，最后得到 -42 。<br>示例 3:</p>
+<p>输入: “4193 with words”<br>输出: 4193<br>解释: 转换截止于数字 ‘3’ ，因为它的下一个字符不为数字。<br>示例 4:</p>
+<p>输入: “words and 987”<br>输出: 0<br>解释: 第一个非空字符是 ‘w’, 但它不是数字或正、负号。<br>     因此无法执行有效的转换。<br>示例 5:</p>
+<p>输入: “-91283472332”<br>输出: -2147483648<br>解释: 数字 “-91283472332” 超过 32 位有符号整数范围。<br>     因此返回 INT_MIN (−231) 。</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><p>import re<br>class Solution:<br>    def myAtoi(self, str1: str) -&gt; int:<br>        str1=str1.strip()<br>        max1=pow(2,31)-1<br>        min1=pow(-2,31)<br>        num=0<br>        t=0<br>        str5=””<br>        if len(str1)&gt;2:<br>            if str1[0] == “+” and len(re.findall(‘[0-9]’,str1[1]))==1:<br>                str2=str1[1:]<br>                for i in range(len(str2)):<br>                    if str2[i].isalpha() or str2[i] == “ “ or str2[i]==”.”  or str2[i]==”+” or str2[i]==”-“:<br>                        num=i<br>                        break<br>                if num!=0:<br>                    str3=str2[:num]<br>                    for i in range(len(str3)):<br>                        if str3[i] != “0”:<br>                            t=1<br>                        if t == 0 :<br>                            return 0<br>                    else:<br>                        for i in range(len(str3)):<br>                            if str3[i] != “0”:<br>                                num=i<br>                                break<br>                        str4 = str3[num:]<br>                        for i in range(len(str4)):<br>                            str5=str5+str4[i];<br>                        if int(str5) &lt; max1 :<br>                            return int(str5)<br>                        else:<br>                            return max1<br>                else:<br>                    str3=str2<br>                    for i in range(len(str3)):<br>                        if str3[i] != “0”:<br>                            t=1<br>                    if t == 0 :<br>                        return 0<br>                    else:<br>                        for i in range(len(str3)):<br>                            if str3[i] != “0”:<br>                                num=i<br>                                break<br>                        str4 = str3[num:]<br>                        for i in range(len(str4)):<br>                            str5=str5+str4[i]<br>                        if int(str5) &lt; max1 :<br>                            return int(str5)<br>                        else:<br>                            return max1</p>
+<pre><code>    elif str1[0] == &quot;-&quot; and len(re.findall(&apos;[0-9]&apos;,str1[1]))==1:
+        str2=str1[1:]
+        for i in range(len(str2)):
+            if str2[i].isalpha() or str2[i] == &quot; &quot; or str2[i]==&quot;.&quot; or str2[i]==&quot;+&quot; or str2[i]==&quot;-&quot;:
+                num=i
+                break
+        if num!=0:
+            str3=str2[:num]
+            for i in range(len(str3)):
+                if str3[i] != &quot;0&quot;:
+                    t=1
+            if t == 0 :
+                return 0
+            else:
+                for i in range(len(str3)):
+                    if str3[i] != &quot;0&quot;:
+                        num=i
+                        break
+                str4 = str3[num:]
+                for i in range(len(str4)):
+                    str5=str5+str4[i]
+                if -int(str5) &gt; min1 :
+                    return -int(str5)
+                else:
+                    return min1
+        else:
+            str3=str2
+            for i in range(len(str3)):
+                if str3[i] != &quot;0&quot;:
+                    t=1
+            if t == 0 :
+                return 0
+            else:
+                for i in range(len(str3)):
+                    if str3[i] != &quot;0&quot;:
+                        num=i
+                        break
+                str4 = str3[num:]
+                for i in range(len(str4)):
+                    str5=str5+str4[i]
+                if -int(str5) &gt; min1 :
+                    return -int(str5)
+                else:
+                    return min1
+    elif len(re.findall(&apos;[0-9]&apos;,str1[0])):
+        for i in range(len(str1)):
+            if str1[i].isalpha() or str1[i] == &quot; &quot; or str1[i]==&quot;.&quot; or str1[i]==&quot;+&quot; or str1[i]==&quot;-&quot;:
+                num=i
+                break
+        if num!=0: 
+            str3=str1[:num]
+            for i in range(len(str3)):
+                if str3[i] != &quot;0&quot;:
+                    t=1
+            if t == 0 :
+                return 0
+            else:
+                for i in range(len(str3)):
+                    if str1[i] != &quot;0&quot;:
+                        num=i
+                        break
+                str4 = str3[num:]
+                for i in range(len(str4)):
+                    str5=str5+str4[i];
+                if int(str5) &lt; max1 :
+                    return int(str5)
+                else:
+                    return max1
+        else:
+            str3=str1
+            for i in range(len(str3)):
+                if str3[i] != &quot;0&quot;:
+                    t=1
+            if t == 0 :
+                return 0
+            else:
+                for i in range(len(str3)):
+                    if str1[i] != &quot;0&quot;:
+                        num=i
+                        break
+                str4 = str3[num:]
+                for i in range(len(str4)):
+                    str5=str5+str4[i];
+                if int(str5) &lt; max1 :
+                    return int(str5)
+                else:
+                    return max1
+    else:
+        return 0
 
+elif len(str1)==1:
+    if len(re.findall(&apos;[a-z]&apos;,str1))==1 or str1==&quot;+&quot; or str1==&quot;-&quot; or str1==&quot;.&quot;:
+        return 0
+    else:
+        return int(str1)
+elif len(str1)==2:
+    if len(re.findall(&apos;[a-z]&apos;,str1[0]))==1  or str1[0]==&quot;.&quot;:
+        return 0
+    elif str1[0]==&quot;+&quot; or str1[0]==&quot;-&quot;:
+        if str1[1] ==&quot;+&quot; or str1[1] ==&quot;-&quot; or len(re.findall(&apos;[a-z]&apos;,str1[1]))==1:
+            return 0
+        else:
+            if str1[1]==&quot;+&quot;:
+                return int(str1[1])
+            else:
+                return int(str1)
+    elif str1.isdigit():
+        return int(str1)
+    elif len(re.findall(&apos;[0-9]&apos;,str1[0]))==1 and  (str1[1].isalpha() or str1[1] == &quot; &quot; 
+        or str1[1]==&quot;.&quot; or str1[1]==&quot;+&quot; or str1[1]==&quot;-&quot;):
+        return int(str1[0])
+    else:
+        return 0
+else:
+    return 0
+</code></pre>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-    <a class="pull-left" href="/2019/10/13/两数相加/" style="float: left;">
-        ← 两数相加
+    <a class="pull-left" href="/2019/10/13/回文数/" style="float: left;">
+        ← 回文数
     </a>
     
     
-    <a class="pull-right" href="/2019/07/19/linux/">
-        ubuntu系统更换源 →
+    <a class="pull-right" href="/2019/10/13/整数反转/">
+        整数反转 →
     </a>
     
 </nav>
