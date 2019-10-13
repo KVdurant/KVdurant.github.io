@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>ubuntu系统更换源 | Hexo</title>
+  <title>两数之和 | Hexo</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -173,39 +173,45 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2019-07-19T04:32:38.939Z" itemprop="datePublished">
-          2019-07-19
+      <time datetime="2019-10-13T06:12:13.348Z" itemprop="datePublished">
+          2019-10-13
       </time>
     
 </span>
-                <h1>ubuntu系统更换源</h1>
+                <h1>两数之和</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="ubuntu系统更换源"><a href="#ubuntu系统更换源" class="headerlink" title="ubuntu系统更换源"></a>ubuntu系统更换源</h2><h3 id="1-首先进入进入-etc-apt-文件夹"><a href="#1-首先进入进入-etc-apt-文件夹" class="headerlink" title="1.首先进入进入/etc/apt/文件夹"></a>1.首先进入进入/etc/apt/文件夹</h3><p>在换源可以先下载vim编辑器 apt-get install vim 下载<br>cd /etc/apt/ 进入sources.list所在文件夹<br>使用vim sources.list进入文件删除源内容</p>
-<p>添加以下源，此源为清华大学的源<br>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial main restricted</p>
-<p>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial-updates main restricted</p>
-<p>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial universe</p>
-<p>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial-updates universe</p>
-<p>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial multiverse</p>
-<p>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial-updates multiverse</p>
-<p>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial-backports main restricted universe multiverse</p>
-<p>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial-security main restricted</p>
-<p>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial-security universe deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial-security multiverse</p>
-<h3 id="2-更新源"><a href="#2-更新源" class="headerlink" title="2.更新源"></a>2.更新源</h3><p>当完成以上步骤以后，使用 apt-get update进行更新源</p>
+      		<p>#Leetcode.PHP解决两数之和</p>
+<p>###题目</p>
+<p>#####给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。<br>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。<br>示例:<br>给定 nums = [2, 7, 11, 15], target = 9<br>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
+<p>#####代码<br>class Solution {</p>
+<pre><code>/**
+ * @param Integer[] $nums
+ * @param Integer $target
+ * @return Integer[]
+ */
+function twoSum($nums, $target) {
+    foreach($nums as $k =&gt; $v){
+        for($i=$k+1;$i&lt;=count($nums)-1;$i++){
+            $target1=$v+$nums[$i];
+            if($target1==$target)
+            {
+             return array($k,$i);   
+            }
+        }
+    }
+}
+</code></pre><p>}</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-    <a class="pull-left" href="/2019/10/13/两数之和/" style="float: left;">
-        ← 两数之和
-    </a>
     
-    
-    <a class="pull-right" href="/2019/07/19/php-redis/">
-        Linunx安装PHP的redis扩展 →
+    <a class="pull-right" href="/2019/07/19/linux/">
+        ubuntu系统更换源 →
     </a>
     
 </nav>

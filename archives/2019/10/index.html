@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>ubuntu系统更换源 | Hexo</title>
+  <title>Archives: 2019/10 | Hexo</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="post-template">
+<body class="home-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -167,103 +167,69 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 </div>
-      
-<section id="intro">
-    <div class="container">
-        <div class="row col-md-offset-2">
-            <div class="col-md-8">
-    			<span class="post-meta">
-      <time datetime="2019-07-19T04:32:38.939Z" itemprop="datePublished">
-          2019-07-19
-      </time>
-    
-</span>
-                <h1>ubuntu系统更换源</h1>
+      <!-- ============================ Hero Image =========================== -->
+
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div>
+                        
+                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
+                        <p></p>
+                        
+                        <h2></h2>
+                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
+                        
+
+                    </div>
+                </div>
             </div>
+            <!-- // .col-md-12 -->
         </div>
-        <div class="col-md-8 col-md-offset-2">
-      		<h2 id="ubuntu系统更换源"><a href="#ubuntu系统更换源" class="headerlink" title="ubuntu系统更换源"></a>ubuntu系统更换源</h2><h3 id="1-首先进入进入-etc-apt-文件夹"><a href="#1-首先进入进入-etc-apt-文件夹" class="headerlink" title="1.首先进入进入/etc/apt/文件夹"></a>1.首先进入进入/etc/apt/文件夹</h3><p>在换源可以先下载vim编辑器 apt-get install vim 下载<br>cd /etc/apt/ 进入sources.list所在文件夹<br>使用vim sources.list进入文件删除源内容</p>
-<p>添加以下源，此源为清华大学的源<br>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial main restricted</p>
-<p>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial-updates main restricted</p>
-<p>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial universe</p>
-<p>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial-updates universe</p>
-<p>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial multiverse</p>
-<p>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial-updates multiverse</p>
-<p>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial-backports main restricted universe multiverse</p>
-<p>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial-security main restricted</p>
-<p>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial-security universe deb <a href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> xenial-security multiverse</p>
-<h3 id="2-更新源"><a href="#2-更新源" class="headerlink" title="2.更新源"></a>2.更新源</h3><p>当完成以上步骤以后，使用 apt-get update进行更新源</p>
-
-            <div class="clearfix"></div>
-            <hr class="nogutter">
-        </div>
-        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
-    
-    <a class="pull-left" href="/2019/10/13/两数之和/" style="float: left;">
-        ← 两数之和
-    </a>
-    
-    
-    <a class="pull-right" href="/2019/07/19/php-redis/">
-        Linunx安装PHP的redis扩展 →
-    </a>
-    
-</nav>
-
-        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
-  /**
-   * 搜狐畅言
-   */
-
-  /*
-  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
-
-  window.onload = function () {
-    (function () {
-      var appid = 'cytXXXX';
-      var conf = 'prod_xxxxxxxxxxxxxxxxx';
-      var width = window.innerWidth || document.documentElement.clientWidth;
-      var loadJs = function (d, a, id) {
-        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
-        var b = document.createElement("script");
-        b.setAttribute("type", "text/javascript");
-        b.setAttribute("charset", "UTF-8");
-        b.setAttribute("src", d);
-        if (id) {
-          b.setAttribute("id", id);
-        }
-        if (typeof a === "function") {
-          if (window.attachEvent) {
-            b.onreadystatechange = function () {
-              var e = b.readyState;
-              if (e === "loaded" || e === "complete") {
-                b.onreadystatechange = null;
-                a()
-              }
-            }
-          } else {
-            b.onload = a
-          }
-        }
-        c.appendChild(b)
-      };
-
-      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
-        window.changyan.api.config({
-          appid: appid,
-          conf: conf
-        })
-      });
-    })();
-  }
-  */
-
-</script>
-</div>
+        <div class="herofade beige-dk"></div>
     </div>
 </section>
 
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
 
+<!-- ============================ END Hero Image =========================== -->
+
+
+
+
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="row boxes">
+                    
+                    
+                        
+                        
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+                            
+                              <h4 class="title"><a href="/2019/10/13/两数之和/">两数之和</a></h4>
+                            
+                            <p><time datetime="2019-10-13T06:12:13.348Z"><a href="/2019/10/13/两数之和/">2019-10-13</a></time></p>
+                        </div>
+                    
+                </div>
+            </div>    
+        </div>
+    </div>
+</section> 
+
+<section id="statement">
+    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+            <p>虽然还没想好写点什么，但是总觉得这里放句话比较和谐。</p>
+        </div>
+    </div>
+</section>
       
 <!-- ============================ Footer =========================== -->
 
